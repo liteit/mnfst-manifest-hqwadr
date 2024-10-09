@@ -1,0 +1,36 @@
+# 🦚 WELCOME TO MANIFEST 🦚 - A complete backend in 1 single file
+# Read more at https://manifest.build/docs
+
+# ******************************************
+# *       ADMIN PANEL CREDENTIALS          *
+# *                                        *
+# *  EMAIL:    admin@manifest.build        *
+# *  PASSWORD: admin                       *
+# ******************************************
+
+name: Healthcare application 👩🏾‍⚕️
+
+entities:
+  Doctor:
+    properties:
+      - fullName
+      - { name: avatar, type: image }
+      - { name: price, type: money, options: { currency: EUR } }
+      - {
+          name: type,
+          type: choice,
+          options: { values: ['Generalist', 'Specialist', 'Intern'] }
+        }
+    belongsTo:
+      - City
+
+  Patient:
+    properties:
+      - fullName
+      - { name: birthdate, type: date }
+    belongsTo:
+      - Doctor
+
+  City:
+    properties:
+      - name
